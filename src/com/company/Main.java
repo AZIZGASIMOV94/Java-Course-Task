@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    private static final String myTxtFile = "path to file";
+    private static final String myTxtFile = "C:\\Users\\User\\Desktop\\words.txt";
     private static String langPreference;
     private static Scanner scanner;
     private static String userAnswer;
@@ -126,30 +126,17 @@ public class Main {
     }
 
     public static void handleLangCases(String langPreference) throws Exception {
-        byte var2 = -1;
-        switch(langPreference.hashCode()) {
-            case 66348:
-                if (langPreference.equals("Aze")) {
-                    var2 = 1;
-                }
-                break;
-            case 69822:
-                if (langPreference.equals("Eng")) {
-                    var2 = 0;
-                }
-        }
 
-        switch(var2) {
-            case 0:
+        switch(langPreference) {
+            case "Eng":
                 handleEnglishLang();
                 break;
-            case 1:
+            case "Aze":
                 handleAzeLang();
                 break;
             default:
                 System.out.println(errorMessageString);
         }
-
     }
 
     public static void main(String[] args) throws Exception{
