@@ -37,94 +37,58 @@ public class Main {
     public static Map<String, String> hashMapFromTextFile(String fileName) throws Exception {
         HashMap<String, String> map = new HashMap();
         FileInputStream in = new FileInputStream(fileName);
-
         try {
             InputStreamReader r = new InputStreamReader(in);
+            BufferedReader reader = new BufferedReader(r);
+            String line = null;
+            String result = "";
 
-            try {
-                BufferedReader reader = new BufferedReader(r);
-
-                try {
-                    String line = null;
-                    String result = "";
-
-                    while((line = reader.readLine()) != null) {
-                        result = result + line + "\n";
-                        String[] parts = line.split(",");
-                        String name = parts[0].trim();
-                        String number = parts[1].trim();
-                        if (!name.equals("") && !number.equals("")) {
-                            map.put(name, number);
-                        }
-                    }
-                } catch (Throwable var13) {
-                    try {
-                        reader.close();
-                    } catch (Throwable var12) {
-                        var13.addSuppressed(var12);
-                    }
-
-                    throw var13;
+            while((line = reader.readLine()) != null) {
+                result = result + line + "\n";
+                String[] parts = line.split(",");
+                String name = parts[0].trim();
+                String number = parts[1].trim();
+                if (!name.equals("") && !number.equals("")) {
+                    map.put(name, number);
                 }
-
-                reader.close();
-            } catch (Throwable var14) {
-                try {
-                    r.close();
-                } catch (Throwable var11) {
-                    var14.addSuppressed(var11);
-                }
-
-                throw var14;
             }
-
+            reader.close();
             r.close();
-        } catch (Throwable var15) {
-            try {
-                in.close();
-            } catch (Throwable var10) {
-                var15.addSuppressed(var10);
-            }
-
-            throw var15;
+        } catch (Exception ex) {
+           ex.printStackTrace();
         }
-
         in.close();
         return map;
     }
 
     public static void handleEnglishLang() {
-        Iterator var0 = mapFromFile.entrySet().iterator();
+        Iterator iterator = mapFromFile.entrySet().iterator();
 
-        while(var0.hasNext()) {
-            Map.Entry<String, String> entry = (Map.Entry)var0.next();
-            PrintStream var10000 = System.out;
-            String var10001 = (String)entry.getKey();
-            var10000.println(var10001 + questionString);
+        while(iterator.hasNext()) {
+            Map.Entry<String, String> entry = (Map.Entry)iterator.next();
+
+            System.out.println(entry.getKey() + questionString);
             userAnswer = scanner.next();
-            if (userAnswer.equals(entry.getValue())) {
+            if (entry.getValue().equals(userAnswer)) {
                 System.out.println(successFeedbackString);
             } else {
                 int count = 0;
                 if (count < 2) {
-                    var10000 = System.out;
-                    var10001 = (String)entry.getKey();
-                    var10000.println(var10001 + questionString);
+                    System.out.println(entry.getKey() + questionString);
                     userAnswer = scanner.next();
-                    if (((String)entry.getValue()).equals(userAnswer)) {
+                    if (entry.getValue().equals(userAnswer)) {
                         System.out.println(successFeedbackString);
                     } else {
-                        int var3 = count + 1;
+                        count ++;
                         System.out.println(failureString);
                         userAnswer = scanner.next();
-                        if (((String)entry.getValue()).equals(userAnswer)) {
+                        if (entry.getValue().equals(userAnswer)) {
                             System.out.println(successFeedbackString);
                         }
                     }
                 }
             }
         }
-
     }
 
     public static void handleAzeLang() {
