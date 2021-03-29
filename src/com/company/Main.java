@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
-    private static final String myTxtFile = "C:\\Users\\User\\Desktop\\words.txt";
+    private static final String myTxtFile = "path to file";
     private static String langPreference;
     private static Scanner scanner;
     private static String userAnswer;
@@ -22,16 +22,16 @@ public class Main {
     private static Map<String, String> mapFromFile;
     static {
         scanner = new Scanner(System.in);
-        langOptionsString = "Sizden lugetdeki sozler sorushulacaq, Ingilis dili uchun \"Eng\", Azerbaycanca uchun \"Aze\" yazisini daxil edin!";
+        langOptionsString = "Sizden lugetdeki sozler sorushulacaq, " +
+                            "Ingilis dili uchun \"Eng\", " +
+                            "Azerbaycanca uchun \"Aze\" yazisini daxil edin!";
         errorMessageString = "Daxil etdiyiniz dil helelik desdeklenmir!";
         questionString = " tercumesi nedir?";
         successFeedbackString = "Duzgun Cavab, Tebrikler!";
         failureString = "yanlish cavab, hazirki sual uchun son shans!";
         try {
-            mapFromFile = hashMapFromTextFile("C:\\Users\\User\\Desktop\\words.txt");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            mapFromFile = hashMapFromTextFile(myTxtFile);
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
     public static Map<String, String> hashMapFromTextFile(String fileName) throws Exception {
@@ -46,10 +46,10 @@ public class Main {
             while((line = reader.readLine()) != null) {
                 result = result + line + "\n";
                 String[] parts = line.split(",");
-                String name = parts[0].trim();
-                String number = parts[1].trim();
-                if (!name.equals("") && !number.equals("")) {
-                    map.put(name, number);
+                String key = parts[0].trim();
+                String value = parts[1].trim();
+                if (!key.equals("") && !value.equals("")) {
+                    map.put(key, value);
                 }
             }
             reader.close();
