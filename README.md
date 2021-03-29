@@ -1,4 +1,4 @@
-# Java-course-Task
+# Java-Course-Task
 Texniki app:
 
 File-da sozler olur alt-alta bu qaydada:
