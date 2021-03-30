@@ -31,5 +31,9 @@ eger mushteri sehv cavab yazsa 3 defe sorushacaq ve sonda duz cavabi yaza bilmes
 
 eger azerbaycan dili sechilse eyni qaydada sorushacaq xerite nedir? mushteri map yazmalidir. yene sehv yazsa 3 defe duz cavabi cixardacaq ki: xerite
 
+# Task Description: 
+Read text file which contains words and their translation put them into map and then ask user to choose in which language wants to get questions
+give three chances to the user to answer correctly then skip to the next question. 
+
 # myTxtFile variable holds the path to the actual file modify it accordingly before running the program.
 
