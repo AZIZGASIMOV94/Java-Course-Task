@@ -92,41 +92,35 @@ public class Main {
     }
 
     public static void handleAzeLang() {
-        Iterator var0 = mapFromFile.entrySet().iterator();
+        Iterator iterator = mapFromFile.entrySet().iterator();
 
-        while(var0.hasNext()) {
-            Map.Entry<String, String> entry = (Map.Entry)var0.next();
-            PrintStream var10000 = System.out;
-            String var10001 = (String)entry.getValue();
-            var10000.println(var10001 + questionString);
+        while(iterator.hasNext()) {
+            Map.Entry<String, String> entry = (Map.Entry)iterator.next();
+            System.out.println(entry.getValue() + questionString);
             userAnswer = scanner.next();
-            if (((String)entry.getKey()).equals(userAnswer)) {
+            if (entry.getKey().equals(userAnswer)) {
                 System.out.println(successFeedbackString);
             } else {
                 int count = 0;
                 if (count < 2) {
-                    var10000 = System.out;
-                    var10001 = (String)entry.getValue();
-                    var10000.println(var10001 + questionString);
+                    System.out.println(entry.getValue() + questionString);
                     userAnswer = scanner.next();
-                    if (((String)entry.getKey()).equals(userAnswer)) {
+                    if (entry.getKey().equals(userAnswer)) {
                         System.out.println(successFeedbackString);
                     } else {
-                        int var3 = count + 1;
+                        count++;
                         System.out.println(failureString);
                         userAnswer = scanner.next();
-                        if (((String)entry.getKey()).equals(userAnswer)) {
+                        if (entry.getKey().equals(userAnswer)) {
                             System.out.println(successFeedbackString);
                         }
                     }
                 }
             }
         }
-
     }
 
     public static void handleLangCases(String langPreference) throws Exception {
-
         switch(langPreference) {
             case "Eng":
                 handleEnglishLang();
