@@ -31,5 +31,5 @@ eger mushteri sehv cavab yazsa 3 defe sorushacaq ve sonda duz cavabi yaza bilmes
 
 eger azerbaycan dili sechilse eyni qaydada sorushacaq xerite nedir? mushteri map yazmalidir. yene sehv yazsa 3 defe duz cavabi cixardacaq ki: xerite
 
-# myTxtxFile variable holds the path to the actual file modify it accordingly before running the program.
+# myTxtFile variable holds the path to the actual file modify it accordingly before running the program.
 
